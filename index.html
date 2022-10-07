@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <style>
-      .material-symbols-outlined {
-        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
-      }
-    </style>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,10 +9,12 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
     <!-- style css -->
     <link rel="stylesheet" href="CSS/style.css" />
-    <!-- font awesome -->
-    <link rel="stylesheet" href="CSS/all.min.css" />
     <!-- css reset -->
     <link rel="stylesheet" href="CSS/normalize.css" />
     <title>Password Generator</title>
@@ -35,7 +32,7 @@
             spellcheck="false"
             readonly
           />
-          <span class="material-symbols-rounded">copy_all </span>
+          <span class="material-symbols-rounded" id="clipboard">copy_all </span>
         </div>
         <div class="strength__indicator">
           <span class="strength"></span>
@@ -67,27 +64,38 @@
                 id="Lowercase"
                 checked
                 readonly
+                value="26"
               />
               <label for="Lowercase">Lowercase (a-z)</label>
             </li>
             <li class="option">
-              <input type="checkbox" name="Uppercase" id="Uppercase" />
+              <input
+                type="checkbox"
+                name="Uppercase"
+                id="Uppercase"
+                value="26"
+              />
               <label for="Uppercase">Uppercase (a-z)</label>
             </li>
             <li class="option">
-              <input type="checkbox" name="Digits" id="Digits" />
+              <input type="checkbox" name="Digits" id="Digits" value="10" />
               <label for="Digits">Numbers (0-9)</label>
             </li>
             <li class="option">
-              <input type="checkbox" name="Symbols" id="Symbols" />
+              <input type="checkbox" name="Symbols" id="Symbols" value="5" />
               <label for="Symbols">Symbols (!-$^+)</label>
             </li>
             <li class="option">
-              <input type="checkbox" name="Dupilcates" id="Dupilcates" />
+              <input
+                type="checkbox"
+                name="Dupilcates"
+                id="Dupilcates"
+                value="0"
+              />
               <label for="Dupilcates">Exclude Duplicates</label>
             </li>
             <li class="option">
-              <input type="checkbox" name="Spaces" id="Spaces" />
+              <input type="checkbox" name="Spaces" id="Spaces" value="1" />
               <label for="Spaces">Include Spaces</label>
             </li>
           </ul>

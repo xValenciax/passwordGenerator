@@ -1,4 +1,28 @@
-// functions
+// GLOBAL VARIABLES
+const clipboardIcon = document.querySelector("#clipboard");
+// password generator
+const Lowercase = [..."abcdefghijklmnopqrstuvwxyz"];
+const Uppercase = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
+const Digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+const Symbols = [..."!-$^+"];
+const space = " ";
+
+const lengthIndicator = document.querySelector("#pass__length");
+const lengthOutput = document.querySelector(".length__text>span");
+const options = Array.from(document.querySelectorAll("input[type='checkbox']"));
+const settings = document.querySelector(".options");
+const strength = document.querySelector(".strength");
+const passField = document.querySelector("#pass");
+const generateBtn = document.querySelector("button");
+
+// percentage for the slider
+let precentage;
+// pool size for pass entropy
+let availablePoolSize = 26;
+// tracked options
+let opts = ["Lowercase"];
+
+// FUNCTIONS
 const setStrengthColor = (ele, entropy) => {
   if (entropy < 25) {
     if (ele) ele.style.backgroundColor = "#E64A4A";
@@ -22,12 +46,16 @@ const findDuplicate = (str, let) => {
   return str.search(let) === -1;
 };
 
-// password generator
-const Lowercase = [..."abcdefghijklmnopqrstuvwxyz"];
-const Uppercase = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
-const Digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-const Symbols = [..."!-$^+"];
-const space = " ";
+const copyToClipboard = (input) => {
+  navigator.clipboard.writeText(input.value).then(() => {
+    clipboardIcon.innerText = "done";
+    clipboardIcon.style.color = "#4285F4";
+    setTimeout(() => {
+      clipboardIcon.innerText = "copy_all";
+      clipboardIcon.style.color = "#707070";
+    }, 1500);
+  });
+};
 
 const passGen = (field, opts = ["Lowercase"]) => {
   let generatorSeed = [Lowercase, Uppercase, Digits, Symbols, space];
@@ -66,17 +94,9 @@ const passGen = (field, opts = ["Lowercase"]) => {
   field.value = field.value.trim();
 };
 
-// global variables
-const lengthIndicator = document.querySelector("#pass__length");
-const lengthOutput = document.querySelector(".length__text>span");
-const options = Array.from(document.querySelectorAll("input[type='checkbox']"));
-const settings = document.querySelector(".options");
-const strength = document.querySelector(".strength");
-const passField = document.querySelector("#pass");
-const generateBtn = document.querySelector("button");
-//
-let precentage;
-let availablePoolSize = 26;
+clipboardIcon.addEventListener("click", (e) => {
+  copyToClipboard(passField);
+});
 
 // generate initial password
 passGen(passField);
@@ -87,7 +107,7 @@ let passEntropy = calcAndSetEntropy(
   lengthIndicator.value,
   strength
 );
-// calculate the strength bar
+// fill initial strength bar
 setStrengthColor(strength, passEntropy);
 
 // set initial length output
@@ -96,13 +116,12 @@ lengthOutput.innerText = lengthIndicator.value;
 // set initial percentage of the length
 precentage = (lengthIndicator.value / 30) * 100;
 
-// set initial background percentage
+// fill initial background percentage
 lengthIndicator.style.background = `linear-gradient(to right,
     rgb(66, 133, 244) ${String(precentage)}%,
     #DFDFDF ${String(precentage)}%)`;
 
 /* length indicator */
-
 lengthIndicator.addEventListener("input", (e) => {
   lengthOutput.innerText = e.target.value;
   // calcualte percentage of the value relative to the wigth of the slider
@@ -125,24 +144,13 @@ lengthIndicator.addEventListener("input", (e) => {
 
 /* passwrod strength checker */
 
-const Pool = {
-  Digits: 10,
-  Lowercase: 26,
-  Uppercase: 26,
-  Symbols: 5,
-  Spaces: 1,
-  Dupilcates: 0,
-};
-
-let opts = ["Lowercase"];
-
 settings.addEventListener("change", (e) => {
   // initial poolSize
   availablePoolSize = 26;
   for (const option of options) {
     if (option.checked && option.name !== "Lowercase") {
       // increment pool size with the value of each checkbox's range
-      availablePoolSize += Pool[option.name];
+      availablePoolSize += option.value;
 
       //keep track of which checkboxes are checked in order to generate a correct password
       if (option.name === "Uppercase") opts[1] = option.name;
