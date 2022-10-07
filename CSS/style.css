@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+* {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background: #4285F4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0.5rem;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 40%);
+    background-color: white;
+    width: 450px;
+    min-height: 500px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.title {
+    font-size: 1.275rem;
+    font-weight: 600;
+    padding: 1.375rem 1.875rem;
+    border-bottom: 1px solid #D4DBE5;
+}
+
+.generator {
+    margin: 20px 30px;
+    font-size: 1.05rem;
+}
+
+.generated__pass {
+    position: relative;
+}
+
+.generated__pass input {
+    letter-spacing: 1.5px;
+    font-size: 1.06rem;
+    font-weight: 500;
+    cursor: default;
+    width: 100%;
+    height: 53px;
+    padding: 0.75rem 1rem;
+    outline: none;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.generated__pass span {
+    position: absolute;
+    right: 8px;
+    top: 12px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #707070;
+    transition: 0.3s color;
+    -webkit-transition: 0.3s color;
+    -moz-transition: 0.3s color;
+    -ms-transition: 0.3s color;
+    -o-transition: 0.3s color;
+}
+
+.generated__pass span:hover {
+    color: #4285F4;
+}
+
+.strength__indicator {
+    position: relative;
+    width: 100%;
+    background-color: #DFDFDF;
+    height: 6px;
+    margin: .85rem 0 1.76rem 0;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+
+.strength__indicator .strength {
+    position: absolute;
+    display: inline-block;
+    background-color: #f1c80b;
+    height: 5px;
+    width: 30%;
+    transition: 0.3s;
+    -webkit-transition: 0.4s;
+    -moz-transition: 0.4s;
+    -ms-transition: 0.4s;
+    -o-transition: 0.4s;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+
+.length__indicator {
+    margin: 0.25rem 0;
+}
+
+.length__indicator .length__text {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+}
+
+.length__indicator .indicator {
+    margin-top: 0.25rem;
+}
+
+.length__indicator .indicator input {
+    background: linear-gradient(to right,
+            rgb(66, 133, 244) 30%,
+            #DFDFDF 30%);
+    width: 100%;
+    height: 5px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    border: 3px solid rgb(66, 133, 244);
+    height: 22px;
+    width: 22px;
+    background: white;
+    cursor: pointer;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    -webkit-appearance: none;
+}
+
+.filters {
+    margin-top: 1.65rem;
+    font-weight: 300;
+    text-align: left;
+}
+
+.filters p {
+    font-weight: 500;
+}
+
+.options {
+    margin-top: 1.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.options .option {
+    margin-bottom: 1rem;
+    width: calc(100%/2);
+}
+
+.options .option input[checked] {
+    opacity: 0.6;
+}
+
+.options .option input {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.options .option label {
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.options .option:first-of-type label {
+    cursor: default;
+}
+
+button {
+    display: inline-block;
+    margin: 1.2rem 0 !important;
+    width: 100%;
+    padding: 1.125rem;
+    background: rgb(66, 133, 244);
+    color: white;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+button:hover {
+    background: rgb(26, 113, 224);
+}
